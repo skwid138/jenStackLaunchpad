@@ -18,7 +18,7 @@ function callJen(){
             // When the client receives the response console.log it out.
             console.log(' back from server with: ', response);
             var $div = $('<div>');
-            $div.append(response.toString());
+            $div.append(response.calls);
             // :last-child
             $('main').append($div);
         }
