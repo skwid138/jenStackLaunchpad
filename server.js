@@ -1,14 +1,14 @@
 var express = require( 'express');
 var path = require( 'path' );
-
+var port = 3000;
 var app = express();
 
 app.use( express.static( 'public' ) );
 
 // spin up server
-app.listen( 3000, function(){
+app.listen( port, function(){
   // server side logs show up in terminal
-  console.log( 'server up pn 3000' );
+  console.log( 'server up on', port );
 }); // end spin up server
 
 // base url
@@ -17,3 +17,4 @@ app.get( '/', function( req, res ){
   console.log( 'base URL hit' );
   res.sendFile( path.resolve( 'views/index.html' ) );
 }); // end base url
+
