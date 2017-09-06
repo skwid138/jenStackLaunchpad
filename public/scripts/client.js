@@ -8,6 +8,9 @@ function onReady(){
 
     // run GET $ajax call on page load
     callJen();
+
+    // create another button on the page that makes a request to the POST route and sends an object literal
+    $('#postButton').on('click', postJen);
 }
 
 function callJen(){
@@ -25,17 +28,16 @@ function callJen(){
     });
 }
 
-// function appendJen ( ) {
-//     $.ajax({
-//         method: 'GET',
-//         url: '/jen',
-//         success: function (response) {
-//             var $div = $('<div>');
-//             $div.append(response);
-//             // :last-child
-//             $('main').append($div);
-//         }
-//     });
-// }
+function postJen ( ) {
+    $.ajax({
+        method: 'POST',
+        url: '/jen',
+        data: { message: $('#postInput').val()},
+        success: function (response) {
+            console.log('post jen to server');
+            
+        }
+    });
+}
 
 $(document).ready(onReady);

@@ -2,6 +2,7 @@ var express = require( 'express');
 var path = require( 'path' );
 var port = 3000;
 var app = express();
+var bodyParser = require('body-parser');
 
 // create a counter in server.js 
 // that counts how many times the get route has been called
@@ -13,6 +14,9 @@ var jenObject = {
 };
 
 app.use( express.static( 'public' ) );
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // spin up server
 app.listen( port, function(){
@@ -43,5 +47,10 @@ app.get('/jen', function (req, res) {
   res.send(jenObject);
   // res.send('jen request');
 }); // end jen url
+
+app.post('/jen', function (req, res) {
+  console.log('post for jen: ', req.body.message);
+  res.send();
+}); // end jen post
 
 //  and show in terminal with console.log
