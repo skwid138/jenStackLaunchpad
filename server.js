@@ -18,3 +18,10 @@ app.get( '/', function( req, res ){
   res.sendFile( path.resolve( 'views/index.html' ) );
 }); // end base url
 
+// Once the request is received on the server, use a console.log
+// to show that the request was received.The server will next send
+// back a response to the client.
+app.get('/jen', function (req, res) {
+  console.log('request for jen received');
+  res.send('jen request');
+}); // end jen url
