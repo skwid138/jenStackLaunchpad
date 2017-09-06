@@ -3,6 +3,15 @@ var path = require( 'path' );
 var port = 3000;
 var app = express();
 
+// create a counter in server.js 
+// that counts how many times the get route has been called
+var jenCount = 0;
+
+// return an object from the server that has the number of times the route has been called
+var jenObject = {
+  calls: 0
+};
+
 app.use( express.static( 'public' ) );
 
 // spin up server
@@ -23,5 +32,16 @@ app.get( '/', function( req, res ){
 // back a response to the client.
 app.get('/jen', function (req, res) {
   console.log('request for jen received');
-  res.send('jen request');
+
+  //  and show in terminal with console.log
+  jenCount += 1;
+
+  jenObject.calls = jenCount;
+  console.log('jenCount ->', jenCount);
+
+  // return an object from the server that has the number of times the route has been called
+  res.send(jenObject);
+  // res.send('jen request');
 }); // end jen url
+
+//  and show in terminal with console.log
